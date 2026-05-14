@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="description" content="SlimeChip - simulateur tactile de slime plein ecran pour navigateur mobile." />
+  <title>SlimeChip</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="app" class="app" aria-label="SlimeChip">
+    <canvas id="slimeCanvas" aria-label="Zone de jeu tactile"></canvas>
+
+    <section class="topbar" aria-label="Informations du jeu">
+      <div>
+        <p class="eyebrow">SlimeChip</p>
+        <h1 id="title">Mode tranquille</h1>
+      </div>
+      <div class="top-actions">
+        <button id="soundButton" class="icon-button" type="button" aria-pressed="true" aria-label="Activer ou couper le son">&#9835;</button>
+        <button id="settingsButton" class="icon-button" type="button" aria-expanded="false" aria-controls="settingsPanel" aria-label="Ouvrir les parametres">&#9881;</button>
+      </div>
+    </section>
+
+    <section class="hint-card" id="hintCard" aria-live="polite">
+      <strong id="hintTitle">Appuie, glisse, etire.</strong>
+      <span id="hintText">Le slime reagit a la pression, a la vitesse et au mode choisi.</span>
+    </section>
+
+    <nav class="tooldock" aria-label="Outils slime">
+      <button class="tool active" data-tool="squish" type="button"><span>&#9995;</span><b>Malaxer</b></button>
+      <button class="tool" data-tool="stretch" type="button"><span>&#8596;</span><b>Etirer</b></button>
+      <button class="tool" data-tool="pop" type="button"><span>&#9675;</span><b>Percer</b></button>
+      <button class="tool" data-tool="swirl" type="button"><span>&#8767;</span><b>Tourbillon</b></button>
+      <button class="tool" data-tool="sparkle" type="button"><span>&#10022;</span><b>Paillettes</b></button>
+    </nav>
+
+    <div id="settingsScrim" class="settings-scrim" hidden></div>
+    <section id="settingsPanel" class="panel" aria-label="Parametres" hidden>
+      <div class="panel-header">
+        <h2>Parametres</h2>
+        <button id="closeSettingsButton" class="icon-button small" type="button" aria-label="Fermer les parametres">&#215;</button>
+      </div>
+
+      <div class="segmented" role="group" aria-label="Mode de jeu">
+        <button id="zenMode" class="segment active" type="button">Tranquille</button>
+        <button id="wildMode" class="segment" type="button">Fou</button>
+      </div>
+
+      <div class="palette" role="group" aria-label="Couleurs rapides">
+        <button class="swatch active" data-palette="aurora" style="--swatch:#a78bfa" aria-label="Palette Aurore"></button>
+        <button class="swatch" data-palette="lagoon" style="--swatch:#22d3ee" aria-label="Palette Lagon"></button>
+        <button class="swatch" data-palette="candy" style="--swatch:#fb7185" aria-label="Palette Bonbon"></button>
+        <button class="swatch" data-palette="lava" style="--swatch:#fb923c" aria-label="Palette Lave"></button>
+        <button class="swatch" data-palette="nebula" style="--swatch:#6d28d9" aria-label="Palette Nebuleuse"></button>
+      </div>
+
+      <label class="slider-row">
+        <span>Elasticite</span>
+        <input id="elasticity" type="range" min="0" max="100" value="62" />
+      </label>
+      <label class="slider-row">
+        <span>Bulles</span>
+        <input id="bubbles" type="range" min="0" max="100" value="55" />
+      </label>
+      <label class="slider-row">
+        <span>Brillance</span>
+        <input id="shine" type="range" min="0" max="100" value="72" />
+      </label>
+      <label class="slider-row">
+        <span>Inclusions</span>
+        <input id="chips" type="range" min="0" max="100" value="58" />
+      </label>
+
+      <button id="resetButton" class="reset" type="button">Reinitialiser le slime</button>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
